@@ -54,3 +54,6 @@ dkms.conf
 # For LSP
 compile_commands.json
 .cache/
+
+# binary file
+minishell
