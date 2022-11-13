@@ -6,14 +6,14 @@
 #    By: tkomeno <tkomeno@student.42tokyo.jp>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/12 20:31:52 by tkomeno           #+#    #+#              #
-#    Updated: 2022/11/12 20:42:51 by tkomeno          ###   ########.fr        #
+#    Updated: 2022/11/13 16:31:57 by tkomeno          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		=	minishell
 LIBFT_PATH	=	./libraries/libft
 LIBS_PATH 	= 	-L$(LIBFT_PATH)
-LIBS		=	-lft
+LIBS		=	-lft -lreadline
 INCLUDES	=	-I ./includes -I $(LIBFT_PATH)/includes
 CFLAGS		=	-Wall -Wextra -Werror $(INCLUDES)
 FILES		=	main.c
