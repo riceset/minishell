@@ -6,7 +6,7 @@
 /*   By: tkomeno <tkomeno@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 20:38:41 by tkomeno           #+#    #+#             */
-/*   Updated: 2022/11/13 16:30:55 by tkomeno          ###   ########.fr       */
+/*   Updated: 2022/11/22 23:53:47 by tkomeno          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,11 @@ int main(int argc, char **argv, char **envp)
 
 	void_caster(argc, argv, envp);
 
-	while (1)
+	while (true)
 	{
 		line = readline("minishell$ ");
 		add_history(line);
 		printf("%s\n", line);
 	}
-
 	return (0);
 }
