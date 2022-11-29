@@ -6,7 +6,7 @@
 /*   By: tkomeno <tkomeno@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 20:38:41 by tkomeno           #+#    #+#             */
-/*   Updated: 2022/11/29 19:31:01 by tkomeno          ###   ########.fr       */
+/*   Updated: 2022/11/29 19:42:54 by tkomeno          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,19 +58,19 @@ t_env	*prepare_environment(char **envp)
 	return (env_lst);
 }
 
-void append_slash_to_path(char **paths)
+void	append_slash_to_path(char **paths)
 {
-	int i;
+	int	i;
 
 	i = -1;
 	while (paths[++i])
 		paths[i] = ft_strjoin(paths[i], "/");
 }
 
-char **get_paths(t_env *env_lst)
+char	**get_paths(t_env *env_lst)
 {
-	char *path;
-	char **paths;
+	char	*path;
+	char	**paths;
 
 	while (!env_lst->is_sentinel)
 	{
@@ -83,11 +83,11 @@ char **get_paths(t_env *env_lst)
 	return (paths);
 }
 
-char *find_command(char *command, char **paths)
+char	*find_command(char *command, char **paths)
 {
-	int i;
-	char *tmp;
-	char *path;
+	int		i;
+	char	*tmp;
+	char	*path;
 
 	path = NULL;
 	if (access(command, F_OK | X_OK) == 0)
@@ -106,23 +106,37 @@ char *find_command(char *command, char **paths)
 	return (path);
 }
 
+void	exec_command(char *line, char **tokens)
+{
+	int		status;
+	pid_t	pid;
+
+	pid = fork();
+	if (pid == 0)
+	{
+		if (execve(line, tokens, NULL) == -1)
+			printf("minishell: command not found.\n");
+	}
+	else
+		waitpid(pid, &status, 0);
+}
+
 int	main(int argc, char **argv, char **envp)
 {
-	char *line;
-	char **tokens;
-	char **paths;
-	t_env *env_lst;
+	char	*line;
+	char	**tokens;
+	char	**paths;
+	t_env	*env_lst;
 
 	void_caster(argc, argv, envp);
 	env_lst = prepare_environment(envp);
 	paths = get_paths(env_lst);
-
 	while (true)
 	{
 		line = read_line();
 		tokens = tokenizer(line);
 		line = find_command(tokens[0], paths);
-		execve(line, tokens, NULL);
+		exec_command(line, tokens);
 	}
 	return (0);
 }
