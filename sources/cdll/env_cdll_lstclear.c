@@ -1,24 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.h                                        :+:      :+:    :+:   */
+/*   env_cdll_lstclear.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tkomeno <tkomeno@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/12 20:39:16 by tkomeno           #+#    #+#             */
-/*   Updated: 2022/11/29 17:59:30 by tkomeno          ###   ########.fr       */
+/*   Created: 2022/09/08 14:21:55 by tkomeno           #+#    #+#             */
+/*   Updated: 2022/11/29 18:24:19 by tkomeno          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINISHELL_H
-# define MINISHELL_H
+#include "cdll.h"
 
-# include <readline/history.h>
-# include <readline/readline.h>
-# include "libft.h"
-# include <stdbool.h>
-# include <stdio.h>
-# include <stdlib.h>
-# include <unistd.h>
+void	env_cdll_lstclear(t_env **head)
+{
+	t_env	*temp;
+	t_env	*trav;
 
-#endif
+	trav = *head;
+	while (!trav->is_sentinel)
+	{
+		temp = trav->next;
+		free(trav);
+		trav = temp;
+	}
+	free(trav);
+	*head = trav;
+}

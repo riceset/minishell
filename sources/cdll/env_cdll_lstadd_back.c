@@ -1,24 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.h                                        :+:      :+:    :+:   */
+/*   env_cdll_lstadd_back.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tkomeno <tkomeno@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/12 20:39:16 by tkomeno           #+#    #+#             */
-/*   Updated: 2022/11/29 17:59:30 by tkomeno          ###   ########.fr       */
+/*   Created: 2022/09/08 14:19:30 by tkomeno           #+#    #+#             */
+/*   Updated: 2022/11/29 18:25:27 by tkomeno          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINISHELL_H
-# define MINISHELL_H
+#include "cdll.h"
 
-# include <readline/history.h>
-# include <readline/readline.h>
-# include "libft.h"
-# include <stdbool.h>
-# include <stdio.h>
-# include <stdlib.h>
-# include <unistd.h>
+void	env_cdll_lstadd_back(t_env **head, t_env *new)
+{
+	t_env	*tail;
+	t_env	*sentinel;
 
-#endif
+	if ((*head)->is_sentinel)
+	{
+		env_cdll_lstadd_first(head, new);
+		return ;
+	}
+	tail = (*head)->prev->prev;
+	sentinel = (*head)->prev;
+	new->next = sentinel;
+	new->prev = tail;
+	sentinel->prev = new;
+	tail->next = new;
+}

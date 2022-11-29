@@ -1,24 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.h                                        :+:      :+:    :+:   */
+/*   env_cdll_lstinit.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tkomeno <tkomeno@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/12 20:39:16 by tkomeno           #+#    #+#             */
-/*   Updated: 2022/11/29 17:59:30 by tkomeno          ###   ########.fr       */
+/*   Created: 2022/09/08 14:20:11 by tkomeno           #+#    #+#             */
+/*   Updated: 2022/11/29 18:24:35 by tkomeno          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINISHELL_H
-# define MINISHELL_H
+#include "cdll.h"
 
-# include <readline/history.h>
-# include <readline/readline.h>
-# include "libft.h"
-# include <stdbool.h>
-# include <stdio.h>
-# include <stdlib.h>
-# include <unistd.h>
+t_env	*env_cdll_lstinit(void)
+{
+	t_env	*sentinel;
 
-#endif
+	sentinel = env_cdll_lstnew("", "");
+	sentinel->is_sentinel = true;
+	sentinel->next = sentinel;
+	sentinel->prev = sentinel;
+	return (sentinel);
+}

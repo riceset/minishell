@@ -1,24 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.h                                        :+:      :+:    :+:   */
+/*   env_cdll_lstadd_first.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tkomeno <tkomeno@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/12 20:39:16 by tkomeno           #+#    #+#             */
-/*   Updated: 2022/11/29 17:59:30 by tkomeno          ###   ########.fr       */
+/*   Created: 2022/09/08 14:18:34 by tkomeno           #+#    #+#             */
+/*   Updated: 2022/11/29 18:24:08 by tkomeno          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINISHELL_H
-# define MINISHELL_H
+#include "cdll.h"
 
-# include <readline/history.h>
-# include <readline/readline.h>
-# include "libft.h"
-# include <stdbool.h>
-# include <stdio.h>
-# include <stdlib.h>
-# include <unistd.h>
-
-#endif
+void	env_cdll_lstadd_first(t_env **head, t_env *new)
+{
+	new->next = *head;
+	new->prev = *head;
+	(*head)->next = new;
+	(*head)->prev = new;
+	*head = (*head)->next;
+}
