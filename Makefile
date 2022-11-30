@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: tkomeno <tkomeno@student.42tokyo.jp>       +#+  +:+       +#+         #
+#    By: vkist-si <vkist-si@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/12 20:31:52 by tkomeno           #+#    #+#              #
-#    Updated: 2022/11/30 14:23:45 by tkomeno          ###   ########.fr        #
+#    Updated: 2022/11/30 23:44:29 by vkist-si         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,6 +17,10 @@ LIBS		=	-lft -lreadline
 INCLUDES	=	-I ./includes -I $(LIBFT_PATH)/includes
 CFLAGS		=	-Wall -Wextra -Werror $(INCLUDES)
 FILES 		=	main.c \
+				init_envr.c \
+				get_path.c \
+				restaure_envp.c \
+				get_cmd.c \
 				cdll/env_cdll_lstadd_back.c \
 				cdll/env_cdll_lstadd_first.c \
 				cdll/env_cdll_lstadd_front.c \
