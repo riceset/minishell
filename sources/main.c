@@ -6,7 +6,7 @@
 /*   By: tkomeno <tkomeno@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 20:38:41 by tkomeno           #+#    #+#             */
-/*   Updated: 2022/11/29 19:42:54 by tkomeno          ###   ########.fr       */
+/*   Updated: 2022/11/30 17:59:53 by tkomeno          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,7 @@ char	*find_command(char *command, char **paths)
 	return (path);
 }
 
-void	exec_command(char *line, char **tokens)
+void	exec_command(char *line, char **tokens, char **envp)
 {
 	int		status;
 	pid_t	pid;
@@ -114,11 +114,44 @@ void	exec_command(char *line, char **tokens)
 	pid = fork();
 	if (pid == 0)
 	{
-		if (execve(line, tokens, NULL) == -1)
-			printf("minishell: command not found.\n");
+		signal(SIGINT, SIG_DFL);
+		if (execve(line, tokens, envp) == -1)
+			perror("minishell");
 	}
 	else
 		waitpid(pid, &status, 0);
+}
+
+char	*join_three(char *s1, char *s2, char *s3)
+{
+	char	*tmp;
+	char	*tmp2;
+
+	tmp = ft_strjoin(s1, s2);
+	tmp2 = ft_strjoin(tmp, s3);
+	free(tmp);
+	return (tmp2);
+}
+
+char	**recreate_envp(t_env *env_lst)
+{
+	char	**envp;
+	char	*current_line;
+	t_env	*trav;
+	int i;
+
+	envp = ft_calloc(env_cdll_lstsize(env_lst), sizeof(char *));
+	i = 0;
+	trav = env_lst;
+	while (!trav->is_sentinel)
+	{
+		current_line = join_three(trav->key, "=", trav->value);
+		envp[i] = current_line;
+		trav = trav->next;
+		i++;
+	}
+	envp[i] = NULL;
+	return (envp);
 }
 
 int	main(int argc, char **argv, char **envp)
@@ -131,12 +164,14 @@ int	main(int argc, char **argv, char **envp)
 	void_caster(argc, argv, envp);
 	env_lst = prepare_environment(envp);
 	paths = get_paths(env_lst);
+	signal(SIGINT, SIG_DFL);
 	while (true)
 	{
 		line = read_line();
 		tokens = tokenizer(line);
 		line = find_command(tokens[0], paths);
-		exec_command(line, tokens);
+		envp = recreate_envp(env_lst);
+		exec_command(line, tokens, envp);
 	}
 	return (0);
 }

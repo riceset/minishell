@@ -1,26 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.h                                        :+:      :+:    :+:   */
+/*   env_cdll_lstsize.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tkomeno <tkomeno@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/12 20:39:16 by tkomeno           #+#    #+#             */
-/*   Updated: 2022/11/29 20:28:18 by tkomeno          ###   ########.fr       */
+/*   Created: 2022/11/30 14:14:52 by tkomeno           #+#    #+#             */
+/*   Updated: 2022/11/30 14:23:03 by tkomeno          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINISHELL_H
-# define MINISHELL_H
+#include "cdll.h"
 
-# include "libft.h"
-# include <readline/history.h>
-# include <readline/readline.h>
-# include <stdbool.h>
-# include <stdio.h>
-# include <stdlib.h>
-# include <sys/wait.h>
-# include <unistd.h>
-# include <signal.h>
+size_t env_cdll_lstsize(t_env *head)
+{
+	size_t size;
+	t_env *trav;
 
-#endif
+	size = 0;
+	trav = head;
+	while (!trav->is_sentinel)
+	{
+		size++;
+		trav = trav->next;
+	}
+	return (size);
+}
