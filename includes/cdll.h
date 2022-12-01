@@ -6,7 +6,7 @@
 /*   By: tkomeno <tkomeno@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/08 14:08:31 by tkomeno           #+#    #+#             */
-/*   Updated: 2022/11/30 14:17:22 by tkomeno          ###   ########.fr       */
+/*   Updated: 2022/12/01 19:28:11 by tkomeno          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 # include "libft.h"
 # include <limits.h>
-# include <stdbool.h>
 # include <stdlib.h>
 # include <unistd.h>
 
@@ -23,7 +22,7 @@ struct					s_env
 {
 	char				*key;
 	char				*value;
-	bool				is_sentinel;
+	t_bool				is_sentinel;
 	struct s_env		*next;
 	struct s_env		*prev;
 };

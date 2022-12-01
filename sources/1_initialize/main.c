@@ -6,7 +6,7 @@
 /*   By: vkist-si <vkist-si@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 20:38:41 by tkomeno           #+#    #+#             */
-/*   Updated: 2022/12/01 19:19:34 by tkomeno          ###   ########.fr       */
+/*   Updated: 2022/12/01 19:32:03 by tkomeno          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	main(int argc, char **argv, char **envp)
 		return (1);
 	env_lst = prepare_environment(envp);
 	paths = get_paths(env_lst);
-	while (true)
+	while (TRUE)
 	{
 		line = read_line();
 		tokens = tokenizer(line);
