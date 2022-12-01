@@ -6,12 +6,10 @@
 /*   By: vkist-si <vkist-si@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 23:40:21 by vkist-si          #+#    #+#             */
-/*   Updated: 2022/11/30 23:43:21 by vkist-si         ###   ########.fr       */
+/*   Updated: 2022/12/01 18:58:00 by tkomeno          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cdll.h"
-#include "libft.h"
 #include "minishell.h"
 
 char	*find_command(char *command, char **paths)

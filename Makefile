@@ -6,7 +6,7 @@
 #    By: vkist-si <vkist-si@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/12 20:31:52 by tkomeno           #+#    #+#              #
-#    Updated: 2022/11/30 23:44:29 by vkist-si         ###   ########.fr        #
+#    Updated: 2022/12/01 19:17:04 by tkomeno          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,18 +16,22 @@ LIBS_PATH 	= 	-L$(LIBFT_PATH)
 LIBS		=	-lft -lreadline
 INCLUDES	=	-I ./includes -I $(LIBFT_PATH)/includes
 CFLAGS		=	-Wall -Wextra -Werror $(INCLUDES)
-FILES 		=	main.c \
-				init_envr.c \
-				get_path.c \
-				restaure_envp.c \
-				get_cmd.c \
-				cdll/env_cdll_lstadd_back.c \
-				cdll/env_cdll_lstadd_first.c \
-				cdll/env_cdll_lstadd_front.c \
-				cdll/env_cdll_lstclear.c \
-				cdll/env_cdll_lstinit.c \
-				cdll/env_cdll_lstnew.c \
-				cdll/env_cdll_lstsize.c
+FILES 		=	1_initialize/main.c \
+				1_initialize/init_envr.c \
+				1_initialize/prompt.c \
+				2_tokenizer/tokenizer.c \
+				3_execution/exec.c \
+				3_execution/get_cmd.c \
+				utils/get_path.c \
+				utils/join_three.c \
+				utils/restaure_envp.c \
+				utils/linked_list/env_cdll_lstadd_back.c \
+				utils/linked_list/env_cdll_lstadd_first.c \
+				utils/linked_list/env_cdll_lstadd_front.c \
+				utils/linked_list/env_cdll_lstclear.c \
+				utils/linked_list/env_cdll_lstinit.c \
+				utils/linked_list/env_cdll_lstnew.c \
+				utils/linked_list/env_cdll_lstsize.c
 SRCS		=	$(addprefix sources/, $(FILES))
 OBJS		=	$(SRCS:.c=.o)
 

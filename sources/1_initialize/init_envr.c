@@ -1,40 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_path.c                                         :+:      :+:    :+:   */
+/*   init_envr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vkist-si <vkist-si@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/30 23:24:11 by vkist-si          #+#    #+#             */
-/*   Updated: 2022/11/30 23:25:14 by vkist-si         ###   ########.fr       */
+/*   Created: 2022/11/30 23:01:09 by vkist-si          #+#    #+#             */
+/*   Updated: 2022/12/01 18:58:02 by tkomeno          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cdll.h"
-#include "libft.h"
 #include "minishell.h"
 
-void	append_slash_to_path(char **paths)
+t_env	*prepare_environment(char **envp)
 {
-	int	i;
+	int		i;
+	char	**tmp;
+	t_env	*env_lst;
 
-	i = -1;
-	while (paths[++i])
-		paths[i] = ft_strjoin(paths[i], "/");
-}
-
-char	**get_paths(t_env *env_lst)
-{
-	char	*path;
-	char	**paths;
-
-	while (!env_lst->is_sentinel)
+	i = 0;
+	env_lst = env_cdll_lstinit();
+	while (envp[i])
 	{
-		if (ft_strncmp(env_lst->key, "PATH", 5) == 0)
-			path = env_lst->value;
-		env_lst = env_lst->next;
+		tmp = ft_split(envp[i], '=');
+		if (i == 0)
+			env_cdll_lstadd_first(&env_lst, env_cdll_lstnew(tmp[0], tmp[1]));
+		else
+			env_cdll_lstadd_back(&env_lst, env_cdll_lstnew(tmp[0], tmp[1]));
+		i++;
 	}
-	paths = ft_split(path, ':');
-	append_slash_to_path(paths);
-	return (paths);
+	return (env_lst);
 }
