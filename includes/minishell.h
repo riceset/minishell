@@ -6,7 +6,7 @@
 /*   By: vkist-si <vkist-si@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 20:39:16 by tkomeno           #+#    #+#             */
-/*   Updated: 2022/12/01 19:28:11 by tkomeno          ###   ########.fr       */
+/*   Updated: 2022/12/01 19:44:42 by tkomeno          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,5 +37,6 @@ char	*read_line(void);
 void	exec_command(char *line, char **tokens, char **envp);
 char	**tokenizer(char *line);
 char	*join_three(char *s1, char *s2, char *s3);
+char	**ft_split_by_set(char *str, char *charset);
 
 #endif
