@@ -1,36 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_cmd.c                                          :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tkomeno <tkomeno@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/30 23:40:21 by vkist-si          #+#    #+#             */
-/*   Updated: 2022/12/06 18:00:42 by tkomeno          ###   ########.fr       */
+/*   Created: 2022/02/17 05:36:39 by tkomeno           #+#    #+#             */
+/*   Updated: 2022/12/06 18:04:17 by tkomeno          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-char	*find_command(char *command, char **paths)
+int	ft_strcmp(char *s1, char *s2)
 {
-	int		i;
-	char	*tmp;
-	char	*path;
+	int	i;
 
-	path = NULL;
-	if (access(command, F_OK | X_OK) == 0)
-		return (command);
-	i = -1;
-	while (paths[++i])
+	i = 0;
+	while (1)
 	{
-		tmp = ft_strjoin(paths[i], command);
-		if (access(tmp, F_OK | X_OK) == 0)
-		{
-			path = tmp;
-			return (path);
-		}
-		free(tmp);
+		if (s1[i] != s2[i])
+			return ((unsigned char)s1[i] - (unsigned char)s2[i]);
+		if (s1[i] == '\0')
+			return (0);
+		i++;
 	}
-	return (command);
 }

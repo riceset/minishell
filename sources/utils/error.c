@@ -1,36 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_cmd.c                                          :+:      :+:    :+:   */
+/*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tkomeno <tkomeno@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/30 23:40:21 by vkist-si          #+#    #+#             */
-/*   Updated: 2022/12/06 18:00:42 by tkomeno          ###   ########.fr       */
+/*   Created: 2022/12/06 17:53:35 by tkomeno           #+#    #+#             */
+/*   Updated: 2022/12/06 17:54:00 by tkomeno          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-char	*find_command(char *command, char **paths)
+void	error_handler(char *cmd, char *error)
 {
-	int		i;
-	char	*tmp;
-	char	*path;
-
-	path = NULL;
-	if (access(command, F_OK | X_OK) == 0)
-		return (command);
-	i = -1;
-	while (paths[++i])
-	{
-		tmp = ft_strjoin(paths[i], command);
-		if (access(tmp, F_OK | X_OK) == 0)
-		{
-			path = tmp;
-			return (path);
-		}
-		free(tmp);
-	}
-	return (command);
+	write(1, "minishell: ", 11);
+	ft_putstr_fd(cmd, 1);
+	write(1, ": ", 2);
+	ft_putstr_fd(error, 1);
+	write(1, "\n", 1);
 }

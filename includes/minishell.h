@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vkist-si <vkist-si@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: tkomeno <tkomeno@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 20:39:16 by tkomeno           #+#    #+#             */
-/*   Updated: 2022/12/01 19:44:42 by tkomeno          ###   ########.fr       */
+/*   Updated: 2022/12/06 18:26:52 by tkomeno          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,5 +38,7 @@ void	exec_command(char *line, char **tokens, char **envp);
 char	**tokenizer(char *line);
 char	*join_three(char *s1, char *s2, char *s3);
 char	**ft_split_by_set(char *str, char *charset);
+void	error_handler(char *cmd, char *error);
+int		ft_strcmp(char *s1, char *s2);
 
 #endif

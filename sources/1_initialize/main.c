@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vkist-si <vkist-si@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: tkomeno <tkomeno@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 20:38:41 by tkomeno           #+#    #+#             */
-/*   Updated: 2022/12/01 19:32:03 by tkomeno          ###   ########.fr       */
+/*   Updated: 2022/12/06 19:30:52 by tkomeno          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,14 @@ int	main(int argc, char **argv, char **envp)
 	while (TRUE)
 	{
 		line = read_line();
+		envp = recreate_envp(env_lst);
 		tokens = tokenizer(line);
 		line = find_command(tokens[0], paths);
-		envp = recreate_envp(env_lst);
+		if (ft_strcmp(tokens[0], line) == 0)
+		{
+			error_handler(line, "command not found");
+			continue;
+		}
 		exec_command(line, tokens, envp);
 	}
 	return (0);

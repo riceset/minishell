@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: vkist-si <vkist-si@student.42sp.org.br>    +#+  +:+       +#+         #
+#    By: tkomeno <tkomeno@student.42tokyo.jp>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/12 20:31:52 by tkomeno           #+#    #+#              #
-#    Updated: 2022/12/01 19:17:04 by tkomeno          ###   ########.fr        #
+#    Updated: 2022/12/06 18:05:32 by tkomeno          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,9 @@ FILES 		=	1_initialize/main.c \
 				utils/linked_list/env_cdll_lstclear.c \
 				utils/linked_list/env_cdll_lstinit.c \
 				utils/linked_list/env_cdll_lstnew.c \
-				utils/linked_list/env_cdll_lstsize.c
+				utils/linked_list/env_cdll_lstsize.c \
+				utils/error.c \
+				utils/ft_strcmp.c
 SRCS		=	$(addprefix sources/, $(FILES))
 OBJS		=	$(SRCS:.c=.o)
 
