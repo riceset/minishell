@@ -1,23 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   prompt.c                                           :+:      :+:    :+:   */
+/*   print_env_lst.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tkomeno <tkomeno@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/01 18:59:13 by tkomeno           #+#    #+#             */
-/*   Updated: 2022/12/01 18:59:23 by tkomeno          ###   ########.fr       */
+/*   Created: 2022/12/12 17:07:04 by tkomeno           #+#    #+#             */
+/*   Updated: 2022/12/12 17:10:48 by tkomeno          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-char	*read_line(void)
+void print_env_lst(void)
 {
-	char	*line;
+	t_env *trv;
 
-	line = readline("minishell$ ");
-	add_history(line);
-	return (line);
+	trv = g_var.env_lst;
+	while (!trv->is_sentinel)
+	{
+		printf("%s=%s\n", trv->key, trv->value);
+		trv = trv->next;
+	}
 }
 

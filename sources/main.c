@@ -1,28 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcmp.c                                        :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tkomeno <tkomeno@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/17 05:36:39 by tkomeno           #+#    #+#             */
-/*   Updated: 2022/12/06 18:04:17 by tkomeno          ###   ########.fr       */
+/*   Created: 2022/12/12 16:40:58 by tkomeno           #+#    #+#             */
+/*   Updated: 2022/12/12 17:43:46 by tkomeno          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	ft_strcmp(char *s1, char *s2)
-{
-	int	i;
+t_var g_var;
 
-	i = 0;
-	while (1)
+int main(int argc, char **argv, char **envp)
+{
+	if (argc > 1 || !argv[0])
+		return (1);
+	prepare_env_lst(envp);
+	get_paths();
+	free_env_lst();
+	while (TRUE)
 	{
-		if (s1[i] != s2[i])
-			return ((unsigned char)s1[i] - (unsigned char)s2[i]);
-		if (s1[i] == '\0')
-			return (0);
-		i++;
+		read_line();
 	}
+	return (0);
 }

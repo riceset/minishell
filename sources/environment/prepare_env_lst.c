@@ -1,33 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_envr.c                                        :+:      :+:    :+:   */
+/*   prepare_env_lst.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vkist-si <vkist-si@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: tkomeno <tkomeno@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/30 23:01:09 by vkist-si          #+#    #+#             */
-/*   Updated: 2022/12/01 18:58:02 by tkomeno          ###   ########.fr       */
+/*   Created: 2022/12/12 17:05:49 by tkomeno           #+#    #+#             */
+/*   Updated: 2022/12/12 17:10:45 by tkomeno          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-t_env	*prepare_environment(char **envp)
+void prepare_env_lst(char **envp)
 {
-	int		i;
-	char	**tmp;
-	t_env	*env_lst;
+	int i;
+	char **tmp;
 
 	i = 0;
-	env_lst = env_cdll_lstinit();
+	g_var.env_lst = env_cdll_lstinit();
 	while (envp[i])
 	{
 		tmp = ft_split(envp[i], '=');
 		if (i == 0)
-			env_cdll_lstadd_first(&env_lst, env_cdll_lstnew(tmp[0], tmp[1]));
+			env_cdll_lstadd_first(&g_var.env_lst, env_cdll_lstnew(tmp[0], tmp[1]));
 		else
-			env_cdll_lstadd_back(&env_lst, env_cdll_lstnew(tmp[0], tmp[1]));
+			env_cdll_lstadd_back(&g_var.env_lst, env_cdll_lstnew(tmp[0], tmp[1]));
 		i++;
 	}
-	return (env_lst);
 }
+

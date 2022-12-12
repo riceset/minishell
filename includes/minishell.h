@@ -6,7 +6,7 @@
 /*   By: tkomeno <tkomeno@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 20:39:16 by tkomeno           #+#    #+#             */
-/*   Updated: 2022/12/06 18:26:52 by tkomeno          ###   ########.fr       */
+/*   Updated: 2022/12/12 17:43:04 by tkomeno          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,22 +23,20 @@
 # include <sys/wait.h>
 # include <unistd.h>
 
-typedef struct s_token
+typedef struct s_var
 {
-	struct s_token *prev;
-	struct s_token *next;
-} t_token;
+	char		*line;
+	t_env		*env_lst;
+	char		**paths;
+}				t_var;
 
-t_env	*prepare_environment(char **envp);
-char	**get_paths(t_env *env_lst);
-char	**recreate_envp(t_env *env_lst);
-char	*find_command(char *command, char **paths);
-char	*read_line(void);
-void	exec_command(char *line, char **tokens, char **envp);
-char	**tokenizer(char *line);
-char	*join_three(char *s1, char *s2, char *s3);
-char	**ft_split_by_set(char *str, char *charset);
-void	error_handler(char *cmd, char *error);
-int		ft_strcmp(char *s1, char *s2);
+extern t_var	g_var;
+
+void			prepare_env_lst(char **envp);
+void			free_env_lst(void);
+void			print_env_lst(void);
+void			get_paths(void);
+void			print_paths(void);
+void			read_line(void);
 
 #endif

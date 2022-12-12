@@ -1,36 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_cmd.c                                          :+:      :+:    :+:   */
+/*   print_paths.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tkomeno <tkomeno@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/30 23:40:21 by vkist-si          #+#    #+#             */
-/*   Updated: 2022/12/06 18:00:42 by tkomeno          ###   ########.fr       */
+/*   Created: 2022/12/12 17:26:38 by tkomeno           #+#    #+#             */
+/*   Updated: 2022/12/12 17:26:53 by tkomeno          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-char	*find_command(char *command, char **paths)
+void print_paths(void)
 {
-	int		i;
-	char	*tmp;
-	char	*path;
+	int i;
 
-	path = NULL;
-	if (access(command, F_OK | X_OK) == 0)
-		return (command);
 	i = -1;
-	while (paths[++i])
-	{
-		tmp = ft_strjoin(paths[i], command);
-		if (access(tmp, F_OK | X_OK) == 0)
-		{
-			path = tmp;
-			return (path);
-		}
-		free(tmp);
-	}
-	return (command);
+	while (g_var.paths[++i])
+		printf("%s\n", g_var.paths[i]);
 }

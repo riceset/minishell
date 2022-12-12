@@ -1,29 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   exec.c                                             :+:      :+:    :+:   */
+/*   get_paths.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tkomeno <tkomeno@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/01 18:59:35 by tkomeno           #+#    #+#             */
-/*   Updated: 2022/12/06 18:58:19 by tkomeno          ###   ########.fr       */
+/*   Created: 2022/12/12 17:20:46 by tkomeno           #+#    #+#             */
+/*   Updated: 2022/12/12 17:24:15 by tkomeno          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	exec_command(char *line, char **tokens, char **envp)
+static void	append_slash_to_paths(char **paths)
 {
-	int		status;
-	pid_t	pid;
+	int	i;
 
-	pid = fork();
-	if (pid == 0)
+	i = -1;
+	while (paths[++i])
+		paths[i] = ft_strjoin(paths[i], "/");
+}
+
+void	get_paths()
+{
+	t_env	*env_lst;
+	char	*path;
+
+	env_lst = g_var.env_lst;
+	while (!env_lst->is_sentinel)
 	{
-		signal(SIGINT, SIG_DFL);
-		if (execve(line, tokens, envp) == -1)
-			perror("minishell");
+		if (ft_strcmp(env_lst->key, "PATH") == 0)
+			path = env_lst->value;
+		env_lst = env_lst->next;
 	}
-	else
-		waitpid(pid, &status, 0);
+	g_var.paths = ft_split(path, ':');
+	append_slash_to_paths(g_var.paths);
 }
