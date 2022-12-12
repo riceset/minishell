@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tkomeno <tkomeno@student.42tokyo.jp>       +#+  +:+       +#+        */
+/*   By: vkist-si <vkist-si@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 20:39:16 by tkomeno           #+#    #+#             */
-/*   Updated: 2022/12/12 17:53:22 by tkomeno          ###   ########.fr       */
+/*   Updated: 2022/12/13 00:03:57 by vkist-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ void			prepare_env_lst(char **envp);
 void			free_env_lst(void);
 void			print_env_lst(void);
 void			get_paths(void);
+void			free_paths(void);
 void			print_paths(void);
 void			read_line(void);
 char			*join_three(char *s1, char *s2, char *s3);

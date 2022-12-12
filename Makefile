@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: tkomeno <tkomeno@student.42tokyo.jp>       +#+  +:+       +#+         #
+#    By: vkist-si <vkist-si@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/12 20:31:52 by tkomeno           #+#    #+#              #
-#    Updated: 2022/12/12 17:51:48 by tkomeno          ###   ########.fr        #
+#    Updated: 2022/12/13 00:03:28 by vkist-si         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,6 +21,7 @@ FILES 		=	main.c \
 				environment/free_env_lst.c \
 				environment/print_env_lst.c \
 				environment/get_paths.c \
+				environment/free_paths.c \
 				environment/print_paths.c \
 				environment/recreate_envp.c \
 				line_handling/read_line.c \
