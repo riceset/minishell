@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tkomeno <tkomeno@student.42tokyo.jp>       +#+  +:+       +#+        */
+/*   By: vkist-si <vkist-si@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 04:20:12 by tkomeno           #+#    #+#             */
-/*   Updated: 2022/12/09 01:36:23 by tkomeno          ###   ########.fr       */
+/*   Updated: 2022/12/12 22:34:45 by vkist-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,5 +87,6 @@ void				ft_putnbr_base(int nbr, char *base);
 int					ft_atoi_base(char *str, char *base);
 int					*ft_range(int min, int max);
 char				*ft_strjoin2(int size, char **strs, char *sep);
+void				ft_matrixfree(char **matrix);
 
 #endif

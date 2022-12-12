@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env_cdll_lstclear.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tkomeno <tkomeno@student.42tokyo.jp>       +#+  +:+       +#+        */
+/*   By: vkist-si <vkist-si@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/08 14:21:55 by tkomeno           #+#    #+#             */
-/*   Updated: 2022/11/29 18:24:19 by tkomeno          ###   ########.fr       */
+/*   Updated: 2022/12/12 23:53:59 by vkist-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,16 @@
 
 void	env_cdll_lstclear(t_env **head)
 {
-	t_env	*temp;
-	t_env	*trav;
+	t_env *to_free;
+	t_env *trav;
 
-	trav = *head;
-	while (!trav->is_sentinel)
+	to_free = *head;
+
+	while (!to_free->is_sentinel)
 	{
-		temp = trav->next;
-		free(trav);
-		trav = temp;
+		trav = to_free->next;
+		free(to_free);
+		to_free = trav;
 	}
-	free(trav);
-	*head = trav;
+	free(to_free);
 }
