@@ -1,30 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   join_three.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tkomeno <tkomeno@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/12 16:40:58 by tkomeno           #+#    #+#             */
-/*   Updated: 2022/12/12 17:54:02 by tkomeno          ###   ########.fr       */
+/*   Created: 2022/12/01 19:07:23 by tkomeno           #+#    #+#             */
+/*   Updated: 2022/12/12 17:51:01 by tkomeno          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-t_var g_var;
-
-int main(int argc, char **argv, char **envp)
+char	*join_three(char *s1, char *s2, char *s3)
 {
-	if (argc > 1 || !argv[0])
-		return (1);
-	prepare_env_lst(envp);
-	get_paths();
-	while (TRUE)
-	{
-		read_line();
-		recreate_envp();
-	}
-	free_env_lst();
-	return (0);
+	char	*tmp;
+	char	*tmp2;
+
+	tmp = ft_strjoin(s1, s2);
+	tmp2 = ft_strjoin(tmp, s3);
+	free(tmp);
+	return (tmp2);
 }

@@ -6,7 +6,7 @@
 #    By: tkomeno <tkomeno@student.42tokyo.jp>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/12 20:31:52 by tkomeno           #+#    #+#              #
-#    Updated: 2022/12/12 17:43:30 by tkomeno          ###   ########.fr        #
+#    Updated: 2022/12/12 17:51:48 by tkomeno          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,9 @@ FILES 		=	main.c \
 				environment/print_env_lst.c \
 				environment/get_paths.c \
 				environment/print_paths.c \
+				environment/recreate_envp.c \
 				line_handling/read_line.c \
+				utils/join_three.c \
 				linked_list/env_cdll_lstadd_back.c \
 				linked_list/env_cdll_lstadd_first.c \
 				linked_list/env_cdll_lstadd_front.c \

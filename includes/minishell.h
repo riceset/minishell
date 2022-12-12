@@ -6,7 +6,7 @@
 /*   By: tkomeno <tkomeno@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 20:39:16 by tkomeno           #+#    #+#             */
-/*   Updated: 2022/12/12 17:43:04 by tkomeno          ###   ########.fr       */
+/*   Updated: 2022/12/12 17:53:22 by tkomeno          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ typedef struct s_var
 {
 	char		*line;
 	t_env		*env_lst;
+	char		**envp;
 	char		**paths;
 }				t_var;
 
@@ -38,5 +39,7 @@ void			print_env_lst(void);
 void			get_paths(void);
 void			print_paths(void);
 void			read_line(void);
+char			*join_three(char *s1, char *s2, char *s3);
+void			recreate_envp(void);
 
 #endif
