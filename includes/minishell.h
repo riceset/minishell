@@ -6,7 +6,7 @@
 /*   By: tkomeno <tkomeno@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 20:39:16 by tkomeno           #+#    #+#             */
-/*   Updated: 2022/12/12 17:53:22 by tkomeno          ###   ########.fr       */
+/*   Updated: 2022/12/12 17:56:50 by tkomeno          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ typedef struct s_var
 	t_env		*env_lst;
 	char		**envp;
 	char		**paths;
+	char		**tokens;
 }				t_var;
 
 extern t_var	g_var;
