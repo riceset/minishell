@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   recreate_envp.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: guribeir <guribeir@student.42.rio>         +#+  +:+       +#+        */
+/*   By: vkist-si <vkist-si@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 23:31:28 by vkist-si          #+#    #+#             */
-/*   Updated: 2022/12/12 17:53:09 by tkomeno          ###   ########.fr       */
+/*   Updated: 2022/12/12 22:55:57 by vkist-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 void	recreate_envp(void)
 {
-	char	*current_line;
 	t_env	*trav;
 	int		i;
 
@@ -23,10 +22,10 @@ void	recreate_envp(void)
 	trav = g_var.env_lst;
 	while (!trav->is_sentinel)
 	{
-		current_line = join_three(trav->key, "=", trav->value);
-		g_var.envp[i] = current_line;
+		g_var.envp[i] = join_three(trav->key, "=", trav->value);
 		trav = trav->next;
 		i++;
 	}
 	g_var.envp[i] = NULL;
+	free_env_lst();
 }

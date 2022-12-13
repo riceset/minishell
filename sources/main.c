@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tkomeno <tkomeno@student.42tokyo.jp>       +#+  +:+       +#+        */
+/*   By: vkist-si <vkist-si@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 16:40:58 by tkomeno           #+#    #+#             */
-/*   Updated: 2022/12/12 17:56:33 by tkomeno          ###   ########.fr       */
+/*   Updated: 2022/12/13 16:06:31 by tkomeno          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,12 @@ int main(int argc, char **argv, char **envp)
 		return (1);
 	prepare_env_lst(envp);
 	get_paths();
-	while (TRUE)
+/* 	while (TRUE)
 	{
 		read_line();
 		recreate_envp();
-	}
+	}*/
 	free_env_lst();
+	free_paths();
 	return (0);
 }

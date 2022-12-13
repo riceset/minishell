@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: tkomeno <tkomeno@student.42tokyo.jp>       +#+  +:+       +#+         #
+#    By: vkist-si <vkist-si@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/29 02:25:48 by tkomeno           #+#    #+#              #
-#    Updated: 2022/12/09 01:39:39 by tkomeno          ###   ########.fr        #
+#    Updated: 2022/12/12 22:29:05 by vkist-si         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -58,7 +58,8 @@ MANDATORY = ft_isalpha.c \
 			ft_strjoin2.c \
 			ft_strncat.c \
 			ft_strncpy.c \
-			ft_strstr.c
+			ft_strstr.c \
+			ft_matrixfree.c \
 
 BONUS =		ft_lstnew.c \
 			ft_lstadd_front.c \
